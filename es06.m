@@ -1,4 +1,3 @@
-%% confronto_metodi.m
 % Script per confrontare i metodi della bisezione, di Newton e delle secanti
 % per trovare la radice di f(x) = exp(x) - cos(x) a diverse tolleranze.
 % Vengono riportati per ciascun metodo:
@@ -8,11 +7,11 @@ clearvars; close all; clc
 
 % Definizione della funzione e della derivata
 f = @(x) exp(x) - cos(x);
-df = @(x) exp(x) + sin(x);  % Derivata di f(x)
+df = @(x) exp(x) + sin(x);
 
 % Parametri iniziali per ciascun metodo:
 tol_list = [1e-3, 1e-6, 1e-9, 1e-12];
-max_iter = 100;  % Numero massimo di iterazioni
+max_iter = 100;
 
 % Per il metodo della bisezione, usiamo l'intervallo iniziale [-0.1, 1]
 a0 = -0.1;
@@ -33,7 +32,7 @@ results = {};
 % Ciclo sulle tolleranze
 for tol = tol_list
     % Metodo della Bisezione (file es04.m)
-    [root_bis, iter_bis, n_eval_bis] = es04(f, a0, b0, tol);
+    [root_bis, iter_bis, n_eval_bis] = es04_bisezione(f, a0, b0, tol, max_iter);
     results = [results; {'Bisezione', tol, root_bis, iter_bis, n_eval_bis}];
     
     % Metodo di Newton (file es05_newton.m)

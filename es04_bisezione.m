@@ -1,4 +1,4 @@
-function [root, iter, n_eval] = bisezione(f, a, b, tol)
+function [root, iter, n_eval] = bisezione(f, a, b, tol, max_iter)
 % bisezione - Metodo di bisezione per il calcolo di uno zero di f.
 %
 % Input:
@@ -22,12 +22,14 @@ function [root, iter, n_eval] = bisezione(f, a, b, tol)
     if nargin < 4 || isempty(tol)
         tol = 1e-6;
     end
+    if nargin < 5 || isempty(max_iter)
+        max_iter = 1000;
+    end
 
-    maxiter = ceil(log2(b-a) - log2(tol));
     iter = 0;
     n_eval = 0;
 
-    while (b - a)/2 > tol && iter < maxiter
+    while (b - a)/2 > tol && iter < max_iter
         c = (a + b) / 2;
         n_eval = n_eval + 1;
         fc = f(c);
