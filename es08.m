@@ -1,7 +1,3 @@
-A = [1 2 3; 4 5 6];
-b = [1; 2; 3];
-x = mialu(A, b);
-
 function x = mialu(A, b)
 % MIALU Risolve il sistema lineare Ax = b usando la fattorizzazione LU con pivoting parziale.
 %
