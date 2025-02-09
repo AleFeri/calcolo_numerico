@@ -32,15 +32,15 @@ results = {};
 % Ciclo sulle tolleranze
 for tol = tol_list
     % Metodo della Bisezione (file es04.m)
-    [root_bis, iter_bis, n_eval_bis] = es04_bisezione(f, a0, b0, tol, max_iter);
+    [root_bis, iter_bis, n_eval_bis] = bisezione(f, a0, b0, tol, max_iter);
     results = [results; {'Bisezione', tol, root_bis, iter_bis, n_eval_bis}];
     
     % Metodo di Newton (file es05_newton.m)
-    [root_newton, iter_newton, n_eval_newton] = es05_newton(f, df, x0_newton, tol, max_iter);
+    [root_newton, iter_newton, n_eval_newton] = newton(f, df, x0_newton, tol, max_iter);
     results = [results; {'Newton', tol, root_newton, iter_newton, n_eval_newton}];
     
     % Metodo delle Secanti (file es05_secanti.m)
-    [root_sec, iter_sec, n_eval_sec] = es05_secanti(f, x0_sec, x1_sec, tol, max_iter);
+    [root_sec, iter_sec, n_eval_sec] = secanti(f, x0_sec, x1_sec, tol, max_iter);
     results = [results; {'Secanti', tol, root_sec, iter_sec, n_eval_sec}];
 end
 

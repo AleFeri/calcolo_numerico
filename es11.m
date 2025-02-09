@@ -11,7 +11,7 @@ for n = 1:15
     x_exact = ones(n, 1);
     
     % Soluzione calcolata con mialu
-    x_computed = es08_mialu(A, b);
+    x_computed = mialu(A, b);
     
     % Calcolo dell'errore
     error = norm(x_computed - x_exact);
