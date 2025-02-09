@@ -10,6 +10,10 @@ function x = mialu(A, b)
 
     % Controllo delle dimensioni
     [n, m] = size(A);
+    if n == 1
+        x = b / A;
+        return;
+    end
     if n ~= m
         error('La matrice A deve essere quadrata.');
     end
