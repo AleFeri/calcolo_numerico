@@ -3,10 +3,6 @@ function x = mialum(A, b)
 % pivoting parziale
 
     [n, m] = size(A);
-    if n == 1
-        x = b / A;
-        return;
-    end
     if n ~= m
         error('La matrice A deve essere quadrata.');
     end

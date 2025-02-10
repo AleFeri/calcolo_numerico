@@ -26,7 +26,7 @@ function [x, nit] = newton2(fun, x0, tol, maxit)
     x0 = x0(:);
     nit = maxit;
     
-    for k = 1:maxit
+    for i = 1:maxit
         [fval, J] = fun(x0);
         delta = mialum(J, -fval);
         x = x0 + delta;
@@ -34,6 +34,7 @@ function [x, nit] = newton2(fun, x0, tol, maxit)
             nit = i;
             break
         end
+        x0 = x;
     end
     warning('Il metodo di Newton non è convergente entro %d iterazioni.', maxit);
 end 
