@@ -1,20 +1,3 @@
-% Confronto dei metodi di Bisezione, Newton, Secanti e Newton Modificato
-% per trovare la radice della funzione
-%
-%   f(x) = exp(x) - cos(x) + sin(x) - x*(x+2)
-%
-% Vengono calcolate le radici per tolleranze:
-%   tol = 1e-3, 1e-6, 1e-9, 1e-12
-%
-% I dati iniziali sono:
-%   - Bisezione: intervallo iniziale [a0, b0] = [-0.1, 1]
-%   - Newton: x0 = 1
-%   - Secanti: x0 = 1 e x1 = 0.9
-%   - Newton Modificato: x0 = 1
-%
-% La tabella finale mostra per ogni metodo:
-%   Metodo, Tolleranza, Radice, Numero di Iterazioni, Numero di Valutazioni Funzionali
-
 clearvars; close all; clc
 
 % Definizione della funzione e della sua derivata

@@ -1,3 +1,5 @@
+close all; clearvars; clc;
+
 results = zeros(15, 2);
 
 for n = 1:15

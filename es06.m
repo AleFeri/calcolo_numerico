@@ -1,8 +1,3 @@
-% Script per confrontare i metodi della bisezione, di Newton e delle secanti
-% per trovare la radice di f(x) = exp(x) - cos(x) a diverse tolleranze.
-% Vengono riportati per ciascun metodo:
-%   Metodo, Tolleranza, Radice, Numero di Iterazioni, Numero di Valutazioni Funzionali
-
 clearvars; close all; clc
 
 % Definizione della funzione e della derivata
