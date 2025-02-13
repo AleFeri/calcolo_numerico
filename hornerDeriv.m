@@ -1,4 +1,4 @@
-function [pval, pder] = hornerDeriv(x, a, X)
+function dP = hornerDeriv(x, a, X)
 % HORNERDERIV Valuta il polinomio in forma di Newton e la sua derivata
 %
 %  [pval, pder] = hornerDeriv(x, a, X)
@@ -12,13 +12,17 @@ function [pval, pder] = hornerDeriv(x, a, X)
 %     pval - valore del polinomio p(x)
 %     pder - valore della derivata p'(x)
 
-    n = length(a) - 1;   % grado del polinomio
-    pval = a(end);       % P_n(x) = a_n
-    pder = 0;            % P_n'(x) = 0 all'inizio
-
-    % Ciclo di Horner 'rovesciato', che include la derivata
-    for i = n:-1:1
-        pder = (x - X(i)) * pder + pval;
-        pval = a(i) + (x - X(i)) * pval;
+    if nargin < 3
+        error("Numero di parametri insufficienti");
+    end
+    n = length(a);
+    if n ~= length(x)
+        error("Dimensione degli input errata");
+    end
+    P = a(n);
+    dP = 0;
+    for k = n-1:-1:1
+	    dP = dP .* (X - x(k)) + P;
+	    P = P .* (X - x(k)) + a(k);
     end
 end
