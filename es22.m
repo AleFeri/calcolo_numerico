@@ -1,38 +1,29 @@
-% Gradi da considerare
 nn = 1:100;
 
-%% Intervallo [0,1]
-a1 = 0; b1 = 1;
-
-% Calcolo delle costanti di Lebesgue
-ll_equidistant_01 = lebesgue(a1, b1, nn, 0);
-ll_chebyshev_01    = lebesgue(a1, b1, nn, 1);
-
-% Grafico per [0,1]
+% --- Prima figura: Intervallo [0,1] ---
 figure;
-plot(nn, ll_equidistant_01, 'r-', 'LineWidth', 2);
+semilogy(nn, lebesgue(0, 1, nn, 1), 'b-', 'LineWidth', 1.5, ...
+    'DisplayName', 'Chebyshev [0,1]');
 hold on;
-plot(nn, ll_chebyshev_01, 'b--', 'LineWidth', 2);
-xlabel('Grado n');
+semilogy(nn, lebesgue(0, 1, nn, 0), 'r--', 'LineWidth', 1.5, ...
+    'DisplayName', 'Equidistanti [0,1]');
+hold off;
+grid on;
+xlabel('Grado del polinomio');
 ylabel('Costante di Lebesgue');
 title('Costante di Lebesgue su [0,1]');
-legend('Ascisse equidistanti','Ascisse di Chebyshev','Location','northwest');
-grid on;
+legend('Location','best');
 
-%% Intervallo [-5,8]
-a2 = -5; b2 = 8;
-
-% Calcolo delle costanti di Lebesgue
-ll_equidistant_58 = lebesgue(a2, b2, nn, 0);
-ll_chebyshev_58    = lebesgue(a2, b2, nn, 1);
-
-% Grafico per [-5,8]
+% --- Seconda figura: Intervallo [-5,8] ---
 figure;
-plot(nn, ll_equidistant_58, 'r-', 'LineWidth', 2);
+semilogy(nn, lebesgue(-5, 8, nn, 1), 'b-', 'LineWidth', 1.5, ...
+    'DisplayName', 'Chebyshev [-5,8]');
 hold on;
-plot(nn, ll_chebyshev_58, 'b--', 'LineWidth', 2);
-xlabel('Grado n');
+semilogy(nn, lebesgue(-5, 8, nn, 0), 'r--', 'LineWidth', 1.5, ...
+    'DisplayName', 'Equidistanti [-5,8]');
+hold off;
+grid on;
+xlabel('Grado del polinomio');
 ylabel('Costante di Lebesgue');
 title('Costante di Lebesgue su [-5,8]');
-legend('Ascisse equidistanti','Ascisse di Chebyshev','Location','northwest');
-grid on;
+legend('Location','best');
