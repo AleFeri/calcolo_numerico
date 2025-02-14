@@ -1,6 +1,8 @@
 function [root, iter, n_eval] = newton(f, df, x0, tol, max_iter)
 % newton - Metodo di Newton per trovare uno zero di f.
 %
+%   [root, iter, n_eval] = newton(f, df, x0, tol, max_iter)
+%
 % Input:
 %   f       - handle della funzione (es. @(x) x.^2-2)
 %   df      - handle della derivata di f (es. @(x) 2*x)

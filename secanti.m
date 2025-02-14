@@ -1,6 +1,8 @@
 function [root, iter, n_eval] = secanti(f, x0, x1, tol, max_iter)
 % secanti - Metodo delle secanti per trovare uno zero di f.
 %
+%   [root, iter, n_eval] = secanti(f, x0, x1, tol, max_iter)
+%
 % Input:
 %   f       - handle della funzione (es. @(x) x.^2-2)
 %   x0, x1  - due valori iniziali (due approssimazioni iniziali)
