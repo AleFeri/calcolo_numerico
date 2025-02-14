@@ -1,6 +1,8 @@
 function [root, iter, n_eval] = bisezione(f, a, b, tol, max_iter)
 % bisezione - Metodo di bisezione per il calcolo di uno zero di f.
 %
+%   [root, iter, n_eval] = bisezione(f, a, b, tol, max_iter)
+%
 % Input:
 %   f       - handle della funzione (esempio: @(x) x.^2 - 4)
 %   a, b    - estremi dell'intervallo [a, b] in cui f cambia segno (deve essere f(a)*f(b) < 0)
