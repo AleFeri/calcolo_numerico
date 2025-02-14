@@ -7,28 +7,28 @@ function w = newtonCotesPesi(n)
 %       ∫₀ⁿ f(x) dx ≈ ∑_{i=0}ⁿ w(i+1)*f(i)
 %
 %   I nodi usati sono: x₀=0, x₁=1, ..., xₙ=n.
+%
+%   L'argomento n deve essere compreso tra 1 e 9, con l'esclusione di n=8.
 
-    % Dichiarazione della variabile simbolica
-    syms x;
-    
-    % Inizializzo il vettore dei pesi come simbolico
-    w = sym(zeros(n+1,1));
-    
-    % Definisco i nodi: 0, 1, 2, ..., n
-    nodes = sym(0:n);
-    
-    % Calcolo dei pesi: per ciascun nodo i calcolo il polinomio di Lagrange L_i(x)
-    % e ne calcolo l'integrale in [0,n].
-    for i = 1:n+1
-        L = sym(1);
-        for j = 1:n+1
-            if j ~= i
-                L = L * (x - nodes(j)) / (nodes(i) - nodes(j));
-            end
-        end
-        % Integriamo L_i(x) su [0,n]
-        w(i) = int(L, x, 0, n);
-        % Semplifichiamo per ottenere il risultato come numero razionale
-        w(i) = simplify(w(i));
+    if (n < 1) || (n > 9) || (n == 8)
+        error("Grado errato: n deve essere in [1..9] e diverso da 8.");
+    end
+
+    w = zeros(1, n+1);
+
+    nodi = 0:n;
+    for iNodo = nodi
+        altriNodi = [nodi(1:iNodo), nodi(iNodo+2:end)];
+
+        diffVals = iNodo - altriNodi;
+        denom = prod(diffVals);
+
+        pCoeffs = poly(altriNodi);
+
+        pCoeffs = [pCoeffs ./ ((n+1):-1:1), 0];
+
+        pVal = polyval(pCoeffs, n);
+
+        w(iNodo+1) = pVal / denom;
     end
 end
