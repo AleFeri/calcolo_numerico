@@ -1,7 +1,7 @@
 function x = mialdl(A, b)
-% MIALDL Risolve il sistema lineare Ax = b per una matrice A simmetrica e definita positiva
-% utilizzando la fattorizzazione LDL^T (senza pivoting). La funzione verifica anche la validità
-% della matrice (simmetria, definitezza positiva) e la compatibilità dimensionale di b.
+% mialdl - Risolve il sistema lineare Ax = b per una matrice A simmetrica e definita positiva utilizzando la fattorizzazione LDL^T (senza pivoting).
+%
+%   x = mialdl(A, b)
 %
 % Input:
 %   A   - matrice n x n (simmetrica, definita positiva)
@@ -10,12 +10,10 @@ function x = mialdl(A, b)
 % Output:
 %   x   - soluzione del sistema lineare Ax = b
 
-    % Controlli preliminari
     [n, m] = size(A);
     if n ~= m
         error('La matrice A deve essere quadrata.');
     end
-    % Verifica simmetria (entro una tolleranza per numeri floating)
     if ~isequal(A, A')
         error('La matrice A non e'' simmetrica.');
     end
@@ -23,7 +21,6 @@ function x = mialdl(A, b)
         error('Il vettore b deve essere colonna e avere dimensione compatibile con A.');
     end
 
-    % Fattorizzazione LDL^T
     L = eye(n);
     D = zeros(n, 1);
 
@@ -38,7 +35,6 @@ function x = mialdl(A, b)
             error('La matrice A non e'' definita positiva (valore diagonale <= 0).');
         end
 
-        % Calcolo degli elementi di L(i,k) per i > k
         for i = k+1:n
             somma = 0;
             for j = 1:k-1
@@ -48,7 +44,6 @@ function x = mialdl(A, b)
         end
     end
 
-    % Risoluzione del sistema Ax = b tramite la fattorizzazione LDL^T
     y = zeros(n,1);
     for i = 1:n
         s = 0;
