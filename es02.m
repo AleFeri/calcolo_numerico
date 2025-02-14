@@ -1,7 +1,7 @@
 close all; clearvars; clc;
 
 % Definizione dell'intervallo x con molti punti per catturare il comportamento vicino a 4/3
-x = linspace(1, 5/3, 100001); 
+x = linspace(1, 5/3, 100001);
 
 % Calcolo della funzione f(x)
 f = 1 + x.^2 + log(abs(3*(1-x) + 1)) / 80;
