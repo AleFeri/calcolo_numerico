@@ -1,6 +1,7 @@
 function [x, nr] = miaqr(A, b)
-% MIAQR Risolve il sistema lineare Ax = b nel senso dei minimi quadrati utilizzando la
-% fattorizzazione QR con Householder. Restituisce la norma del residuo.
+% miaqr - Risolve il sistema lineare Ax = b nel senso dei minimi quadrati utilizzando la fattorizzazione QR con Householder. Restituisce la norma del residuo.
+%
+%   [x, nr] = miaqr(A, b)
 %
 % Input:
 %   A : matrice m x n, con m >= n e rank(A) = n.
@@ -10,7 +11,6 @@ function [x, nr] = miaqr(A, b)
 %   x  : soluzione in minimi quadrati di Ax = b.
 %   nr : norma del vettore residuo, ||b - A*x||.
 
-    % Controlli preliminari
     [m, n] = size(A);
     if length(b) ~= m
         error('Dimensione del vettore b non compatibile con la matrice A.');
@@ -22,7 +22,6 @@ function [x, nr] = miaqr(A, b)
         error('rank(A) < n: impossibile eseguire la fattorizzazione QR per un sistema ben determinato.');
     end
 
-    % Fattorizzazione QR
     R = A;
     Q = eye(m);
 
