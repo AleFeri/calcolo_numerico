@@ -1,6 +1,6 @@
 nn = 1:100;
 
-% --- Prima figura: Intervallo [0,1] ---
+% Intervallo [0,1]
 figure;
 semilogy(nn, lebesgue(0, 1, nn, 1), 'b-', 'LineWidth', 1.5, ...
     'DisplayName', 'Chebyshev [0,1]');
@@ -14,7 +14,7 @@ ylabel('Costante di Lebesgue');
 title('Costante di Lebesgue su [0,1]');
 legend('Location','best');
 
-% --- Seconda figura: Intervallo [-5,8] ---
+% Intervallo [-5,8]
 figure;
 semilogy(nn, lebesgue(-5, 8, nn, 1), 'b-', 'LineWidth', 1.5, ...
     'DisplayName', 'Chebyshev [-5,8]');
