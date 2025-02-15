@@ -18,18 +18,7 @@ ylabel('Valore di x');
 title('Convergenza della soluzione con diverse tolleranze');
 
 function [f, jacobian] = fun(x)
-% FUN Computes the gradient and Hessian of f(x)
-%
-% Syntax:
-%   [f, jacobian] = fun(x);
-%
-% Input:
-%   x - Column vector of variables
-%
-% Output:
-%   f - Gradient of f(x)
-%   jacobian - Hessian matrix of f(x)
-
+% fun - Calcola il gradiente e l’Hessiana di f(x)
     x = x(:);
     n = length(x);
     Q = 4 * eye(n) + diag(ones(n-1, 1), 1) + diag(ones(n-1, 1), -1);
