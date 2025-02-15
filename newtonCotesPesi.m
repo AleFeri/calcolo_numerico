@@ -1,14 +1,13 @@
 function w = newtonCotesPesi(n)
-% NEWTONCOTESPESI Restituisce i pesi della formula di Newton-Cotes di grado n.
+% newtonCotesPesi - Restituisce i pesi della formula di Newton-Cotes di grado n.
 %
-%   w = newtonCotesPesi(n) restituisce un vettore colonna di dimensione (n+1)x1,
-%   i cui elementi sono i pesi della formula di quadratura chiusa su [0,n]:
+%   w = newtonCotesPesi(n)
 %
-%       ∫₀ⁿ f(x) dx ≈ ∑_{i=0}ⁿ w(i+1)*f(i)
+% Input:
+%   n   - grado compreso tra 1 e 9 con 8 escluso
 %
-%   I nodi usati sono: x₀=0, x₁=1, ..., xₙ=n.
-%
-%   L'argomento n deve essere compreso tra 1 e 9, con l'esclusione di n=8.
+% Output:
+%   W   - pesi della formula di Newton-Cotes di grado n
 
     if (n < 1) || (n > 9) || (n == 8)
         error("Grado errato: n deve essere in [1..9] e diverso da 8.");
