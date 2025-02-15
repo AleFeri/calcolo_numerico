@@ -1,7 +1,5 @@
-% Valore esatto
 I_esatto = (exp(3) - 1) / 3;
 
-% Parametri richiesti
 kVals = [1, 2, 3, 6];
 n = 12;
 

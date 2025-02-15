@@ -1,19 +1,21 @@
 function [If, err] = composita(fun, a, b, k, n)
-% COMPOSITA  Applica la formula composta di Newton-Cotes di grado k 
-%            per approssimare ∫[a,b] fun(x) dx.
+% composita - Applica la formula composta di Newton-Cotes di grado k 
+% per approssimare ∫[a,b] fun(x) dx.
 %
 %   [If, err] = composita(fun, a, b, k, n)
 %
-%   - fun  : handle alla funzione da integrare, accetta input vettoriali.
-%   - [a,b]: estremi di integrazione (a <= b).
-%   - k    : grado della formula di Newton-Cotes chiusa (k+1 nodi).
-%   - n    : numero di sottointervalli (deve essere multiplo di k).
-%            -> l'intervallo [a,b] è diviso in n parti di uguale ampiezza.
+% Input:
+%   fun - handle alla funzione da integrare, accetta input vettoriali.
+%   a   - estremo di integrazione a > b
+%   b   - estremo di integrazione b >= a
+%   k   - grado della formula di Newton-Cotes chiusa (k+1 nodi).
+%   n   - numero di sottointervalli (deve essere multiplo di k).
+%         l'intervallo [a,b] è diviso in n parti di uguale ampiezza.
 %
-%   Restituisce:
-%   - If   : approssimazione dell'integrale di fun su [a,b].
-%   - err  : stima dell'errore di quadratura (basata su un semplice 
-%            confronto di Richardson, se possibile).
+% Output:
+%   If   - approssimazione dell'integrale di fun su [a,b].
+%   err  - stima dell'errore di quadratura (basata su un semplice 
+%          confronto di Richardson, se possibile).
 
     % Controlli di validità sugli ingressi
     if a > b
