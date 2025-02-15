@@ -1,21 +1,32 @@
-format long;
-x0 = zeros(50, 1);
-x = zeros(50, 3);
-iterazioni = zeros(3, 1);
+clc; clearvars; close all;
 
-[x(:, 1), iterazioni(1)] = newton2(@fun, x0, 10.^(-3), 1000);
-[x(:, 2), iterazioni(2)] = newton2(@fun, x0, 10.^(-8), 1000);
-[x(:, 3), iterazioni(3)] = newton2(@fun, x0, 10.^(-13), 1000);
+tolleranze = [1e-3, 1e-8, 1e-13];
+iterazioni = zeros(length(tolleranze), 1);
+
+x0 = zeros(50, 1);
+x = zeros(50, length(tolleranze));
+
+for i = 1:length(tolleranze)
+    [x(:, i), iterazioni(i)] = newton2(@fun, x0, tolleranze(i), 1000);
+end
+
+fprintf('Tolleranza\tIterazioni\n');
+for i = 1:length(tolleranze)
+    fprintf('10^{%d}\t\t%d\n', log10(tolleranze(i)), iterazioni(i));
+end
 
 figure;
-plot(1:50, x(:, 1), 'r', 'DisplayName', 'tol = 10^{-3}');
+colors = {'r', 'g', 'b'};
 hold on;
-plot(1:50, x(:, 2), 'g', 'DisplayName', 'tol = 10^{-8}');
-plot(1:50, x(:, 3), 'b', 'DisplayName', 'tol = 10^{-13}');
+for i = 1:length(tolleranze)
+    plot(1:50, x(:, i), colors{i}, 'DisplayName', ...
+        sprintf('tol = 10^{%d}', log10(tolleranze(i))));
+end
 hold off;
 xlabel('Indice della radice');
 ylabel('Valore di x');
 title('Convergenza della soluzione con diverse tolleranze');
+legend('Location', 'best');
 
 function [f, jacobian] = fun(x)
 % fun - Calcola il gradiente e l’Hessiana di f(x)
