@@ -4,9 +4,10 @@ function [root, iter, n_eval] = bisezione(f, a, b, tol, max_iter)
 %   [root, iter, n_eval] = bisezione(f, a, b, tol, max_iter)
 %
 % Input:
-%   f       - handle della funzione (esempio: @(x) x.^2 - 4)
-%   a, b    - estremi dell'intervallo [a, b] in cui f cambia segno (deve essere f(a)*f(b) < 0)
-%   tol     - tolleranza per la condizione di arresto (default: 1e-6)
+%   f           - handle della funzione (esempio: @(x) x.^2 - 4)
+%   a, b        - estremi dell'intervallo [a, b] in cui f cambia segno (deve essere f(a)*f(b) < 0)
+%   tol         - tolleranza per la condizione di arresto (default: 1e-6)
+%   max_iter    - iterazioni massime (default 1000)
 %
 % Output:
 %   root    - approssimazione della radice
