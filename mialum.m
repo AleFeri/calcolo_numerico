@@ -1,6 +1,15 @@
 function x = mialum(A, b)
-% mialum risolve il sistema lineare Ax = b con fattorizzazione LU senza
+% mialum - Risolve il sistema lineare Ax = b con fattorizzazione LU senza
 % pivoting parziale
+%
+%   x = mialum(A, b)
+%
+% Input:
+%   A   - matrice n x n
+%   b   - vettore termini noti
+%
+% Output:
+%   x   - soluzione del sistema lineare Ax = b
 
     [n, m] = size(A);
     if n ~= m

@@ -1,9 +1,8 @@
 function [x, nit] = newton2(fun, x0, tol, maxit)
-% NEWTON - Risolve un sistema di equazioni non lineari f(x)=0
+% newton2 - Risolve un sistema di equazioni non lineari f(x)=0
 %          tramite il metodo di Newton multivariato.
 %
-% Sintassi:
-%   [x, nit] = newton(fun, x0, tol, maxit)
+%   [x, nit] = newton2(fun, x0, tol, maxit)
 %
 % Input:
 %   fun   - funzione che, dato x, restituisce [f, J]
