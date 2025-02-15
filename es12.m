@@ -1,9 +1,11 @@
 close all; clearvars; clc;
 
-for n = 1:100
-    An = ones(n) .* -1 + diag(ones(1, n) * n + 1);
-    factorizedA = mialdlt(An);
-    plot((1:n), diag(factorizedA));
+for dim = 1:100
+    A = -ones(dim) + diag(ones(1, dim) * dim + 1);
+    
+    LDT = mialdlt(A);
+    
+    plot(1:dim, diag(LDT), 'LineWidth', 1.5);
     hold on;
 end
 hold off;
