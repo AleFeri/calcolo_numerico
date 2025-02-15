@@ -1,5 +1,5 @@
 function yy = lagrange(x, y, xx)
-% LAGRANGE Interpolazione polinomiale di Lagrange
+% lagrange - Interpolazione polinomiale di Lagrange
 %
 %   yy = lagrange(x, y, xx)
 %
@@ -21,10 +21,8 @@ function yy = lagrange(x, y, xx)
             end
         end
     end
-    
-    % Calcola la somma pesata dei valori
+
     yy = sum(y(:) .* L, 1);
     
-    % Assicura che yy abbia la stessa dimensione di xx
     yy = reshape(yy, size(xx));
 end

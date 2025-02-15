@@ -1,7 +1,7 @@
-function YQ = newton(X, Y, XQ)
-% NEWTON Interpolazione polinomiale di Newton
+function YQ = newton3(X, Y, XQ)
+% newton3 - Interpolazione polinomiale di Newton
 %
-%	YQ = newton0(X, Y, XQ)
+%	YQ = newton3(X, Y, XQ)
 %
 % Input:
 %   X  - Vettore dei nodi di interpolazione
@@ -12,11 +12,11 @@ function YQ = newton(X, Y, XQ)
 %   yy - Vettore contenente i valori interpolati in xx
 
     if length(X) ~= length(Y) || length(X) <= 0
-	    error('Dati errati');
+	    error('I vettori X e Y devono avere la stessa dimensione e non essere vuoti.');
     end
     
     if length(unique(X)) ~= length(X)
-	    error('Ascisse non distinte');
+	    error('Le ascisse in X devono essere distinte.');
     end
     df = difdiv(X, Y);
     n = length(df) - 1;
