@@ -33,7 +33,7 @@ hold on;
 loglog(hvals, err_nak, 'r-x', 'LineWidth',1.2, 'MarkerFaceColor','r');
 hold off; 
 grid on;
-xlabel('Passo h = 20/n');
+xlabel('h');
 ylabel('Errore massimo di interpolazione');
 title('Funzione di Runge su [0,10] - Confronto spline naturale vs not-a-knot');
 legend('Naturale','Not-a-Knot','Location','best');
