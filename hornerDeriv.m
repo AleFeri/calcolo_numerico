@@ -1,28 +1,31 @@
-function dP = hornerDeriv(x, a, X)
-% HORNERDERIV Valuta il polinomio in forma di Newton e la sua derivata
+function [p, dp] = hornerDeriv(x, a, X)
+% hornerDeriv - Valuta il polinomio in forma di Newton e la sua derivata
 %
-%  [pval, pder] = hornerDeriv(x, a, X)
+%   [p, dp] = hornerDeriv(x, a, X)
 %
-%  Input:
-%     x   - ascissa in cui valutare polinomio e derivata
-%     a   - coefficienti {a_0, a_1, ..., a_n} del polinomio in base di Newton
-%     X   - nodi {x_0, x_1, ..., x_{n-1}} (lunghezza n)
+% Input:
+%   x   - Ascissa in cui valutare il polinomio e la sua derivata
+%   a   - Vettore dei coefficienti {a0, a1, ..., an} del polinomio in forma di Newton
+%   X   - Vettore dei nodi {x0, x1, ..., x_{n-1}} (di lunghezza n-1)
 %
-%  Output:
-%     pval - valore del polinomio p(x)
-%     pder - valore della derivata p'(x)
+% Output:
+%   p   - Valore del polinomio p(x)
+%   dp  - Valore della derivata p'(x)
 
     if nargin < 3
-        error("Numero di parametri insufficienti");
+        error('Numero di parametri insufficienti');
     end
+
     n = length(a);
-    if n ~= length(x)
-        error("Dimensione degli input errata");
+    if length(X) ~= n - 1
+        error('La lunghezza di X deve essere pari a n-1, dove n = length(a)');
     end
-    P = a(n);
-    dP = 0;
+
+    p = a(n);
+    dp = 0;
+    
     for k = n-1:-1:1
-	    dP = dP .* (X - x(k)) + P;
-	    P = P .* (X - x(k)) + a(k);
+        dp = dp * (x - X(k)) + p;
+        p = p * (x - X(k)) + a(k);
     end
 end

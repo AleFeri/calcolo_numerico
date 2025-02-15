@@ -1,5 +1,6 @@
 function yy = hermite(xi, fi, f1i, xx)
-% HERMIT funzione che calcola il polinomio interpolante di Hermite
+% hermite - funzione che calcola il polinomio interpolante di Hermite
+%
 %   yy = hermite(xi, fi, f1i, xx)
 % 
 % Input:

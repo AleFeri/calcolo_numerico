@@ -1,15 +1,14 @@
 function df = difdivHermite(X, Y)
+% difdivHermite - Calcola le differenze divise di Hermite sulle coppie (xi, fi)
 %
 %	df = difdivHermite(X, Y)
 %
-%	Calcola le differenze divise di Hermite sulle coppie (xi, fi)
+% Input:
+%   X   - vettore delle ascisse
+%	Y   - vettore delle ordinate e delle derivate della forma [f(0) f'(0) f(1)...]
 %
-%	Input:
-%		X: vettore delle ascisse
-%		Y: vettore delle ordinate e delle derivate della forma [f(0) f'(0) f(1)...]
-%
-%	Output:
-%		df: vettore delle differenze divise di Hermite
+% Output:
+%	df  - vettore delle differenze divise di Hermite
 %
     n = length(X)-1;
     df = Y;
