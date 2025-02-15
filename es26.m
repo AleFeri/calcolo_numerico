@@ -1,57 +1,39 @@
-% FUNZIONE DI RUNGE
 f = @(x) 1./(1 + x.^2);
 
-% ESTREMI DELL'INTERVALLO
 a = 0; 
 b = 10;
 
-% GRIGLIA FINE (10001 PUNTI) PER STIMARE L'ERRORE
-xq = linspace(a, b, 10001);
-fxq = f(xq);
+xfine = linspace(a, b, 10001);
+ffine = f(xfine);
 
-% VETTORE DI n (NUMERO DI SOTTOINTERVALLI)
-nValues = 4:4:800;
+n_values = 4:4:800;
+err_nat = zeros(size(n_values));
+err_nak = zeros(size(n_values));
+hvals = zeros(size(n_values));
 
-% PREALLOCAZIONE DEGLI ERRORI E DEL PASSO h
-err_nat = zeros(size(nValues));  % spline naturale
-err_nak = zeros(size(nValues));  % spline not-a-knot
-hvals   = zeros(size(nValues));  % passo h = (b-a)/n
+for k = 1:length(n_values)
+    n = n_values(k);
 
-% CICLO SUI VALORI DI n
-for k = 1:length(nValues)
-    n = nValues(k);
-    % Passo
-    h = (b - a)/n;
-    
-    % NODI UNIFORMI
     xi = linspace(a, b, n+1);
     fi = f(xi);
 
-    % ------ SPLINE NATURALE ------
-    % spline0 deve essere la tua function che implementa la spline cubica naturale
-    s_nat = spline0(xi, fi, xq);
+    snat = spline0(xi, fi, xfine);
 
-    % ------ SPLINE NOT-A-KNOT (built-in) ------
-    s_nak = spline(xi, fi, xq);
+    snak = spline(xi, fi, xfine);
 
-    % ERRORE MASSIMO SU [a,b]
-    err_nat(k) = max(abs(s_nat - fxq));
-    err_nak(k) = max(abs(s_nak - fxq));
+    err_nat(k) = max(abs(ffine - snat));
+    err_nak(k) = max(abs(ffine - snak));
 
-    % SALVO h
-    hvals(k) = h;
+    hvals(k) = (b - a) / n;
 end
 
-% ---------------- PLOT LOG-LOG ----------------
 figure;
-loglog(hvals, err_nat, 'b-o', 'LineWidth', 1.2, ...
-       'MarkerFaceColor','b', 'DisplayName','Naturale');
+loglog(hvals, err_nat, 'b-+', 'LineWidth',1.2, 'MarkerFaceColor','b');
 hold on;
-loglog(hvals, err_nak, 'r--s', 'LineWidth', 1.2, ...
-       'MarkerFaceColor','r', 'DisplayName','Not-a-knot');
-hold off;
+loglog(hvals, err_nak, 'r-x', 'LineWidth',1.2, 'MarkerFaceColor','r');
+hold off; 
 grid on;
-xlabel('h = (b-a)/n');
+xlabel('Passo h = 20/n');
 ylabel('Errore massimo di interpolazione');
-title('Funzione di Runge su [-10,10]: spline naturale vs not-a-knot');
-legend('Location','best');
+title('Funzione di Runge su [0,10] - Confronto spline naturale vs not-a-knot');
+legend('Naturale','Not-a-Knot','Location','best');
