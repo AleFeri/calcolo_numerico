@@ -6,8 +6,8 @@ function [root, iter, n_eval] = secanti(f, x0, x1, tol, max_iter)
 % Input:
 %   f       - handle della funzione (es. @(x) x.^2-2)
 %   x0, x1  - due valori iniziali (due approssimazioni iniziali)
-%   tol     - tolleranza per la convergenza (default 1e-6)
-%   max_iter- numero massimo di iterazioni (default 100)
+%   tol     - tolleranza per la convergenza (default 10e-16)
+%   max_iter- numero massimo di iterazioni (default 1000)
 %
 % Output:
 %   root    - l'approssimazione dello zero
