@@ -7,7 +7,7 @@ function [root, iter, n_eval] = newton(f, df, x0, tol, max_iter)
 %   f       - handle della funzione (es. @(x) x.^2-2)
 %   df      - handle della derivata di f (es. @(x) 2*x)
 %   x0      - approssimazione iniziale
-%   tol     - tolleranza per la convergenza (default 10e-16)
+%   tol     - tolleranza per la convergenza (default 1e-16)
 %   max_iter- numero massimo di iterazioni (default 1000)
 %
 % Output:
@@ -16,7 +16,7 @@ function [root, iter, n_eval] = newton(f, df, x0, tol, max_iter)
 %   n_eval  - numero totale di valutazioni della funzione f (e di df se necessario)
 
     if nargin < 4 || isempty(tol)
-        tol = 10e-16;
+        tol = 1e-16;
     end
     if nargin < 5 || isempty(max_iter)
         max_iter = 1000;
